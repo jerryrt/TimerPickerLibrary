@@ -10,8 +10,12 @@ import android.text.SpannableString;
 import android.text.TextWatcher;
 import android.text.style.RelativeSizeSpan;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
+import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 import java.util.Arrays;
@@ -73,20 +77,14 @@ public class TimerEditText extends EditText{
         };
         addTextChangedListener(countdownTimeTextWatcher);
 
-        //On touch, only focus the view and show the keyboard
-        //return true to ignore the typical response that the
-        //touch would have elicited
-//        setOnTouchListener(new OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//
-//                requestFocus();
-//                InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-//                imm.showSoftInput(TimerEditText.this, InputMethodManager.SHOW_IMPLICIT);
-//                Log.d("test","onTouch");
-//                return true;
-//            }
-//        });
+        //ignore long presses
+        setOnLongClickListener(new OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                return true;
+            }
+        });
+
         //remove blinking cursor
         setCursorVisible(false);
         //make keyboard show numbers only
@@ -95,11 +93,14 @@ public class TimerEditText extends EditText{
         setImeActionLabel("Start", KeyEvent.KEYCODE_ENTER);
         //do not show a full screened text view when in horizontal orientation
         setImeOptions(EditorInfo.IME_FLAG_NO_EXTRACT_UI);
-//        ((Activity)getContext()).getWindow().setSoftInputMode(
-//                WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+
     }
 
-
+    @Override
+    public void onSelectionChanged(int start, int end) {
+        //don't let people highlight text
+        setSelection(getText().length());
+    }
     /**
      * Set the time for the view
      * @param timeInMillis time represented in milliseconds

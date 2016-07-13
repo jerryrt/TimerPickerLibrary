@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/TimerPickerPlayground.iml" filepath="$PROJECT_DIR$/TimerPickerPlayground.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TimerPicker.iml" filepath="$PROJECT_DIR$/TimerPicker.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/timerpicker/timerpicker.iml" filepath="$PROJECT_DIR$/timerpicker/timerpicker.iml" />
     </modules>
