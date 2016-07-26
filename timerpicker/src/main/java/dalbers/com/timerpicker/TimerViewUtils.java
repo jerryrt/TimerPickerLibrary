@@ -6,9 +6,15 @@ import java.util.Arrays;
  * Created by davidalbers on 7/16/16.
  */
 public class TimerViewUtils {
+    public static final String[] hmsDelimiters = {"h ","m ","s"};
+    public static final String[] punctuationDelimiters = {":",".",""};
+    public enum DelimiterType {
+        hms,
+        punctuation
+    }
 
-    public static String millisToFormattedHMS(long millis) {
-        return stringToFormattedHMS(millisToHMSZeros(millis));
+    public static String millisToFormattedHMS(long millis,DelimiterType delimiterType) {
+        return stringToFormattedHMS(millisToHMSZeros(millis),delimiterType);
     }
     /**
      * Convert a string with hours mins seconds and any number of characters to milliseconds
@@ -93,6 +99,10 @@ public class TimerViewUtils {
         return new int[]{hrs, mins, secs};
     }
 
+    public static String stringToFormattedHMS(String input) {
+        return stringToFormattedHMS(input,DelimiterType.hms);
+    }
+
     /**
      * Given a string with a variable amount of numbers and chars
      * Format it to the hour, min, sec setupView that looks like "12h 34m 56s"
@@ -100,10 +110,22 @@ public class TimerViewUtils {
      * @param input string with a variable amount of numbers and chars
      * @return formatted string that looks like "12h 34m 56s"
      */
-    public static String stringToFormattedHMS(String input) {
+    public static String stringToFormattedHMS(String input, DelimiterType delimiterType) {
+        String[] delimiters = hmsDelimiters;
+        switch (delimiterType)
+        {
+            case hms:
+                delimiters = hmsDelimiters;
+                break;
+            case punctuation:
+                delimiters = punctuationDelimiters;
+                break;
+        }
+        int formattedStrLen = 6 + delimiters[0].length() +
+                delimiters[1].length() + delimiters[2].length();
         //backspaced, removed the 's' but the user intended to remove last second number
-        if (input.length() == 10)
-            input = input.substring(0, 9);
+        if (input.length() == formattedStrLen)
+            input = input.substring(0, formattedStrLen-1);
         //remove all non numbers
         String stripped = input.replaceAll("[^\\d]", "");
         //remove leading zeros
@@ -123,10 +145,11 @@ public class TimerViewUtils {
             preZeros = new String(zeros);
         }
         String fullNums = preZeros + stripped;
+
         //setupView in 12h 34m 56s
-        return fullNums.substring(0, 2) + "h " +
-                fullNums.substring(2, 4) + "m " +
-                fullNums.substring(4, 6) + "s";
+        return fullNums.substring(0, 2) + delimiters[0]  +
+                fullNums.substring(2, 4) + delimiters[1] +
+                fullNums.substring(4, 6) + delimiters[2];
 
     }
 

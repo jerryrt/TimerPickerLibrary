@@ -13,12 +13,16 @@ import android.widget.TextView;
 
 import java.util.Arrays;
 
+
 /**
  * Created by davidalbers on 7/10/16.
+ *
+ * TODO:
+ * -colors
  */
 public class TimerTextView extends TextView {
     private long time = 0;
-
+    private TimerViewUtils.DelimiterType delimiterType = TimerViewUtils.DelimiterType.hms;
     public TimerTextView(Context context) {
         super(context);
     }
@@ -54,8 +58,8 @@ public class TimerTextView extends TextView {
     public void setTime(long timeInMillis) {
         time = timeInMillis;
         //convert milliseconds to a string of hours,min,secs with leading zeros
-        String hmsString = TimerViewUtils.millisToFormattedHMS(timeInMillis);
-        setTextWithSpan(hmsString);
+        String hmsString = TimerViewUtils.millisToFormattedHMS(timeInMillis,delimiterType);
+        applyText(hmsString);
     }
 
     /**
@@ -70,6 +74,7 @@ public class TimerTextView extends TextView {
         super.setText(span);
     }
 
+
     /**
      * Put a number at the end of the timer text.
      * If text is full, this will have no effect.
@@ -79,11 +84,12 @@ public class TimerTextView extends TextView {
      */
     public void appendNumber(int number) {
         //append a char to the string
-        String formattedStr = TimerViewUtils.stringToFormattedHMS(getText().toString() + number);
+        String formattedStr = TimerViewUtils.stringToFormattedHMS(getText().toString() + number,
+                delimiterType);
         //update our time variable which is in ms
         time = TimerViewUtils.timeStringToMillis(formattedStr);
         //apply string formatting and set text
-        setTextWithSpan(formattedStr);
+        applyText(formattedStr);
     }
 
     /**
@@ -97,16 +103,30 @@ public class TimerTextView extends TextView {
         String formattedStr = TimerViewUtils.stringToFormattedHMS(
                 getText().subSequence(
                         0,getText().length()-1)
-                .toString());
+                .toString(), delimiterType);
         //update our time variable which is in ms
         time = TimerViewUtils.timeStringToMillis(formattedStr);
         //apply string formatting and set text
-        setTextWithSpan(formattedStr);
+        applyText(formattedStr);
     }
 
+    private void applyText(String text) {
+        switch (delimiterType) {
+            case hms:
+                setTextWithSpan(text);
+                break;
+            case punctuation:
+                setText(text);
+                break;
+        }
+    }
     public long getTime() {
         return time;
     }
 
-
+    public void setDelimiterType(TimerViewUtils.DelimiterType delimiterType) {
+        this.delimiterType = delimiterType;
+        //reapply the text
+        applyText(TimerViewUtils.stringToFormattedHMS(getText().toString(),delimiterType));
+    }
 }

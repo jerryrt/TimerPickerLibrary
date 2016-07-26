@@ -2,6 +2,7 @@ package dalbers.com.timerpicker;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import java.sql.Time;
 
@@ -18,6 +20,18 @@ import java.sql.Time;
 public class TimerPickerDialogFragment extends DialogFragment {
     private TimerTextView timerTextView;
     private TimerPickerDialogListener listener;
+    private Button oneButton;
+    private Button twoButton;
+    private Button threeButton;
+    private Button fourButton;
+    private Button fiveButton;
+    private Button sixButton;
+    private Button sevenButton;
+    private Button eightButton;
+    private Button nineButton;
+    private Button zeroButton;
+    private ImageButton deleteButton;
+    private TimerViewUtils.DelimiterType delimiterType = TimerViewUtils.DelimiterType.hms;
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // Use the Builder class for convenient dialog construction
@@ -25,22 +39,35 @@ public class TimerPickerDialogFragment extends DialogFragment {
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.numerical_dialog_layout, null);
         timerTextView = (TimerTextView)view.findViewById(R.id.timerTextView);
-        (view.findViewById(R.id.one_button)).setOnClickListener(numberButtonClickListener);
-        (view.findViewById(R.id.two_button)).setOnClickListener(numberButtonClickListener);
-        (view.findViewById(R.id.three_button)).setOnClickListener(numberButtonClickListener);
-        (view.findViewById(R.id.four_button)).setOnClickListener(numberButtonClickListener);
-        (view.findViewById(R.id.five_button)).setOnClickListener(numberButtonClickListener);
-        (view.findViewById(R.id.six_button)).setOnClickListener(numberButtonClickListener);
-        (view.findViewById(R.id.seven_button)).setOnClickListener(numberButtonClickListener);
-        (view.findViewById(R.id.eight_button)).setOnClickListener(numberButtonClickListener);
-        (view.findViewById(R.id.nine_button)).setOnClickListener(numberButtonClickListener);
-        (view.findViewById(R.id.zero_button)).setOnClickListener(numberButtonClickListener);
-        (view.findViewById(R.id.delete_button)).setOnClickListener(new View.OnClickListener() {
+        timerTextView.setDelimiterType(delimiterType);
+        oneButton = (Button)view.findViewById(R.id.one_button);
+                oneButton.setOnClickListener(numberButtonClickListener);
+        twoButton = (Button)view.findViewById(R.id.two_button);
+        twoButton.setOnClickListener(numberButtonClickListener);
+        threeButton = (Button)view.findViewById(R.id.three_button);
+        threeButton.setOnClickListener(numberButtonClickListener);
+        fourButton = (Button)view.findViewById(R.id.four_button);
+        fourButton.setOnClickListener(numberButtonClickListener);
+        fiveButton = (Button)view.findViewById(R.id.five_button);
+        fiveButton.setOnClickListener(numberButtonClickListener);
+        sixButton = (Button)view.findViewById(R.id.six_button);
+        sixButton.setOnClickListener(numberButtonClickListener);
+        sevenButton = (Button)view.findViewById(R.id.seven_button);
+        sevenButton.setOnClickListener(numberButtonClickListener);
+        eightButton = (Button)view.findViewById(R.id.eight_button);
+        eightButton.setOnClickListener(numberButtonClickListener);
+        nineButton = (Button)view.findViewById(R.id.nine_button);
+        nineButton.setOnClickListener(numberButtonClickListener);
+        zeroButton = (Button)view.findViewById(R.id.zero_button);
+        zeroButton.setOnClickListener(numberButtonClickListener);
+        deleteButton = (ImageButton)view.findViewById(R.id.delete_button);
+        deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 timerTextView.removeLastNumber();
             }
         });
+        setColors();
         builder.setView(view);
         builder.setMessage(R.string.dialog_title)
                 .setPositiveButton(R.string.dialog_set, new DialogInterface.OnClickListener() {
@@ -88,4 +115,14 @@ public class TimerPickerDialogFragment extends DialogFragment {
                 timerTextView.appendNumber(0);
         }
     };
+
+    public void setDelimiter(TimerViewUtils.DelimiterType delimiterType) {
+        this.delimiterType = delimiterType;
+    }
+
+    private void setColors() {
+        //int color = Color.BLACK
+        //oneButton.setTextColor(Color.parseColor("#000000"));
+        //tButton.setTextColor(Color.BLUE);
+    }
 }

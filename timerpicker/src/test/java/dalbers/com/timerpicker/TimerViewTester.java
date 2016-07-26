@@ -49,13 +49,31 @@ public class TimerViewTester {
                 TimerViewUtils.stringToFormattedHMS("99999911111")), 362439000L);
 
         //general valid long->string conversions
-        assertEquals(TimerViewUtils.millisToFormattedHMS(        0L), "00h 00m 00s");
-        assertEquals(TimerViewUtils.millisToFormattedHMS(    10000L), "00h 00m 10s");
-        assertEquals(TimerViewUtils.millisToFormattedHMS(    60000L), "00h 01m 00s");
-        assertEquals(TimerViewUtils.millisToFormattedHMS(  3600000L), "01h 00m 00s");
-        assertEquals(TimerViewUtils.millisToFormattedHMS(359999000L), "99h 59m 59s");
-        assertEquals(TimerViewUtils.millisToFormattedHMS(   -60000L), "00h 00m 00s");
+        assertEquals(TimerViewUtils.millisToFormattedHMS(        0L, 
+                TimerViewUtils.DelimiterType.hms), "00h 00m 00s");
+        assertEquals(TimerViewUtils.millisToFormattedHMS(    10000L,
+                TimerViewUtils.DelimiterType.hms), "00h 00m 10s");
+        assertEquals(TimerViewUtils.millisToFormattedHMS(    60000L, 
+                TimerViewUtils.DelimiterType.hms), "00h 01m 00s");
+        assertEquals(TimerViewUtils.millisToFormattedHMS(  3600000L, 
+                TimerViewUtils.DelimiterType.hms), "01h 00m 00s");
+        assertEquals(TimerViewUtils.millisToFormattedHMS(359999000L, 
+                TimerViewUtils.DelimiterType.hms), "99h 59m 59s");
+        assertEquals(TimerViewUtils.millisToFormattedHMS(   -60000L, 
+                TimerViewUtils.DelimiterType.hms), "00h 00m 00s");
 
+        assertEquals(TimerViewUtils.millisToFormattedHMS(        0L, 
+                TimerViewUtils.DelimiterType.punctuation), "00:00.00");
+        assertEquals(TimerViewUtils.millisToFormattedHMS(    10000L, 
+                TimerViewUtils.DelimiterType.punctuation), "00:00.10");
+        assertEquals(TimerViewUtils.millisToFormattedHMS(    60000L,
+                TimerViewUtils.DelimiterType.punctuation), "00:01.00");
+        assertEquals(TimerViewUtils.millisToFormattedHMS(  3600000L,
+                TimerViewUtils.DelimiterType.punctuation), "01:00.00");
+        assertEquals(TimerViewUtils.millisToFormattedHMS(359999000L,
+                TimerViewUtils.DelimiterType.punctuation), "99:59.59");
+        assertEquals(TimerViewUtils.millisToFormattedHMS(   -60000L,
+                TimerViewUtils.DelimiterType.punctuation), "00:00.00");
     }
 
 }

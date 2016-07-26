@@ -107,7 +107,7 @@ public class TimerEditText extends EditText{
      */
     public void setTime(long timeInMillis) {
         //convert milliseconds to a string of hours,min,secs with leading zeros
-        String hmsString = TimerViewUtils.millisToFormattedHMS(timeInMillis);
+        String hmsString = TimerViewUtils.millisToFormattedHMS(timeInMillis, TimerViewUtils.DelimiterType.hms);
         //make "h m s" smaller than numbers
         Spannable span = new SpannableString(hmsString);
         span.setSpan(new RelativeSizeSpan(0.6f), 2, 4, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);

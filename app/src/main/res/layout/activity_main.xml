@@ -9,9 +9,59 @@
     android:gravity="center_horizontal">
 
 
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/delimiterSpinner"
+            android:layout_gravity="center_horizontal"
+             />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="12sp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/timer"
+            android:id="@+id/textView"
+            android:layout_gravity="center_vertical"
+            />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/plus"
+            android:id="@+id/create_delete_timer_button"
+            android:layout_marginLeft="12sp"/>
+
+    </LinearLayout>
+
+    <dalbers.com.timerpicker.TimerTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/timer_text_view"
+        android:layout_gravity="center_horizontal"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_marginTop="12sp"
+        android:visibility="invisible"
+        />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/show"
-        android:id="@+id/show_button" />
+        android:text="@string/start_timer"
+        android:id="@+id/start_stop_button"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="24sp"
+        android:drawableLeft="@drawable/arrow"/>
+
+
+
+
 </LinearLayout>
