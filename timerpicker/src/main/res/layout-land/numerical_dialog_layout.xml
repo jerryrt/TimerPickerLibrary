@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginRight="10sp"
+    android:layout_marginLeft="10sp">
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+            <dalbers.com.timerpicker.TimerTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/timerTextView"
+                custom:time="0"
+                android:textSize="36sp"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/delete_button"
+                android:src="@drawable/ic_backspace"
+                android:background="?android:attr/selectableItemBackground" />
+        </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/one_button_text"
+                android:id="@+id/one_button"
+                android:background="?android:attr/selectableItemBackground"
+                android:textSize="24sp"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/two_button_text"
+                android:id="@+id/two_button"
+                android:background="?android:attr/selectableItemBackground"
+                android:textSize="24sp"/>
+            <!--red button, blue button-->
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/three_button_text"
+                android:id="@+id/three_button"
+                android:background="?android:attr/selectableItemBackground"
+                android:textSize="24sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/four_button_text"
+                android:id="@+id/four_button"
+                android:background="?android:attr/selectableItemBackground"
+                android:textSize="24sp"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/five_button_text"
+                android:id="@+id/five_button"
+                android:background="?android:attr/selectableItemBackground"
+                android:textSize="24sp"
+                />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/six_button_text"
+                android:id="@+id/six_button"
+                android:background="?android:attr/selectableItemBackground"
+                android:textSize="24sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/seven_button_text"
+                android:id="@+id/seven_button"
+                android:background="?android:attr/selectableItemBackground"
+                android:textSize="24sp"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/eight_button_text"
+                android:id="@+id/eight_button"
+                android:background="?android:attr/selectableItemBackground"
+                android:textSize="24sp"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nine_button_text"
+                android:id="@+id/nine_button"
+                android:background="?android:attr/selectableItemBackground"
+                android:textSize="24sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/zero_button_text"
+                android:id="@+id/zero_button"
+                android:background="?android:attr/selectableItemBackground"
+                android:textSize="24sp"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -19,6 +19,7 @@ import java.util.Arrays;
  *
  * TODO:
  * -colors
+ * -horizontal view
  */
 public class TimerTextView extends TextView {
     private long time = 0;

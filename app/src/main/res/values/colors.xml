@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#202020</color>
+    <color name="colorPrimaryDark">#1e1e1e</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="abc_color_highlight_material">#54ff0000</color>
+    <color name="abc_background_cache_hint_selector_material_dark">#fe000000</color>
+    <color name="secondary_text_dark">#616060</color>
+
 </resources>

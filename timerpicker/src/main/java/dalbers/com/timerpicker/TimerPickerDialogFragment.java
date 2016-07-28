@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.view.ContextThemeWrapper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -67,8 +68,7 @@ public class TimerPickerDialogFragment extends DialogFragment {
                 timerTextView.removeLastNumber();
             }
         });
-        setColors();
-        builder.setView(view);
+            builder.setView(view);
         builder.setMessage(R.string.dialog_title)
                 .setPositiveButton(R.string.dialog_set, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -120,9 +120,18 @@ public class TimerPickerDialogFragment extends DialogFragment {
         this.delimiterType = delimiterType;
     }
 
-    private void setColors() {
-        //int color = Color.BLACK
-        //oneButton.setTextColor(Color.parseColor("#000000"));
-        //tButton.setTextColor(Color.BLUE);
+    private void setColors(int color) {
+        oneButton.setTextColor(color);
+        twoButton.setTextColor(color);
+        threeButton.setTextColor(color);
+        fourButton.setTextColor(color);
+        fiveButton.setTextColor(color);
+        sixButton.setTextColor(color);
+        sevenButton.setTextColor(color);
+        eightButton.setTextColor(color);
+        nineButton.setTextColor(color);
+        zeroButton.setTextColor(color);
+        timerTextView.setTextColor(color);
+
     }
 }
