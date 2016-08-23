@@ -1,23 +1,34 @@
 package dalbers.com.timerpickerplayground;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
+import android.util.Log;
+import android.view.Display;
+import android.view.Gravity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
+
+import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
+
+import java.util.Calendar;
 
 import dalbers.com.timerpicker.TimerPickerDialogFragment;
 import dalbers.com.timerpicker.TimerPickerDialogListener;
 import dalbers.com.timerpicker.TimerTextView;
 import dalbers.com.timerpicker.TimerViewUtils;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateChangedListener, DatePickerDialog.OnDateSetListener{
 
     /*UI variables*/
     private ImageButton createDeleteButton;
@@ -32,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
     private CountDownTimer countDownTimer;
 
-    private static final String LOG_TAG = "dalbers/TimerPickerPlayground";
+    private static final String LOG_TAG = "dalbers/TPP";
 
     private TimerViewUtils.DelimiterType delimiterType = TimerViewUtils.DelimiterType.hms;
 
@@ -91,6 +102,15 @@ public class MainActivity extends AppCompatActivity {
     private View.OnClickListener startStopTimerClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            Calendar now = Calendar.getInstance();
+            DatePickerDialog dpd = DatePickerDialog.newInstance(
+                    MainActivity.this,
+                    now.get(Calendar.YEAR),
+                    now.get(Calendar.MONTH),
+                    now.get(Calendar.DAY_OF_MONTH)
+            );
+            dpd.show(getFragmentManager(), "Datepickerdialog");
+            /*
             if(timerStarted) {
                 timerStarted = false;
                 setUITimerPaused();
@@ -106,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
                     countDownTimer.start();
                 }
             }
+            */
         }
     };
 
@@ -145,6 +166,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void dialogCanceled() {
+            timerCreated = false;
             setUITimerDeleted();
         }
     };
@@ -209,8 +231,18 @@ public class MainActivity extends AppCompatActivity {
         timerDialog.setDelimiter(delimiterType);
         timerDialog.show(getSupportFragmentManager(), "TimePickerDialog");
         timerDialog.setDialogListener(dialogListener);
-
+        getSupportFragmentManager().executePendingTransactions();
+        timerDialog.getDialog().getWindow().getAttributes().width =
+                (int) (getDeviceMetrics(this).widthPixels);
         startStopButton.setText(getString(R.string.pause_timer));
+    }
+
+    public static DisplayMetrics getDeviceMetrics(Context context) {
+        DisplayMetrics metrics = new DisplayMetrics();
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+        display.getMetrics(metrics);
+        return metrics;
     }
 
     /**
@@ -241,5 +273,15 @@ public class MainActivity extends AppCompatActivity {
                 setUITimerDeleted();
             }
         };
+    }
+
+    @Override
+    public void onDateChanged() {
+        Log.d(LOG_TAG,"date");
+    }
+
+    @Override
+    public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
+        Log.d(LOG_TAG,"date");
     }
 }

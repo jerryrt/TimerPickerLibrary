@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Targets modern phones like Nexus 5x, Galaxy S7
+    Tested on Droid Turbo
+-->
+<resources>
+    <dimen name="number_button_width">64dp</dimen>
+    <dimen name="timer_text_size">36sp</dimen>
+    <dimen name="number_button_group_width">192dp</dimen>
+    <dimen name="number_button_text_size">24sp</dimen>
+    <dimen name="divider_size">5dp</dimen>
+    <dimen name="total_min_width">384dp</dimen>
+</resources>

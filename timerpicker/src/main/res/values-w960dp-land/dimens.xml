@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Targets modern tablets like Nexus 7 and larger.
+-->
+<resources>
+    <dimen name="number_button_width">84dp</dimen>
+    <dimen name="timer_text_size">42sp</dimen>
+    <dimen name="number_button_group_width">252dp</dimen>
+    <dimen name="number_button_text_size">36sp</dimen>
+    <dimen name="divider_size">10dp</dimen>
+    <dimen name="total_min_width">252dp</dimen>
+</resources>

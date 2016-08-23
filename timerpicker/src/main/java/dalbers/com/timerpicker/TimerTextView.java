@@ -101,10 +101,7 @@ public class TimerTextView extends TextView {
      */
     public void removeLastNumber() {
         //remove the last char of the textview's text
-        String formattedStr = TimerViewUtils.stringToFormattedHMS(
-                getText().subSequence(
-                        0,getText().length()-1)
-                .toString(), delimiterType);
+        String formattedStr = TimerViewUtils.removeLastNumber(getText().toString(), delimiterType);
         //update our time variable which is in ms
         time = TimerViewUtils.timeStringToMillis(formattedStr);
         //apply string formatting and set text

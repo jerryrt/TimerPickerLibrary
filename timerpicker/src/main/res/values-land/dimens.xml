@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Targets anything less than 400dp in screen width in landscape mode,
+    It's unlikely anything falls in this category
+-->
+<resources>
+    <dimen name="number_button_width">48dp</dimen>
+    <dimen name="timer_text_width">144dp</dimen>
+    <dimen name="timer_text_size">36sp</dimen>
+    <dimen name="number_button_group_width">144dp</dimen>
+    <dimen name="number_button_text_size">18sp</dimen>
+    <dimen name="divider_size">0dp</dimen>
+    <dimen name="total_min_width">288dp</dimen>
+</resources>

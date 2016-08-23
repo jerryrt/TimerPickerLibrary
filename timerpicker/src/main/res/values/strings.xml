@@ -13,4 +13,5 @@
     <string name="eight_button_text">8</string>
     <string name="nine_button_text">9</string>
     <string name="zero_button_text">0</string>
+    <string name="delete_button_text">DEL</string>
 </resources>

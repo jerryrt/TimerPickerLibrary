@@ -127,7 +127,7 @@ public class TimerViewUtils {
         if (input.length() == formattedStrLen)
             input = input.substring(0, formattedStrLen-1);
         //remove all non numbers
-        String stripped = input.replaceAll("[^\\d]", "");
+        String stripped = stripNonNumbers(input);
         //remove leading zeros
         while (stripped.length() > 0) {
             if (stripped.charAt(0) == '0')
@@ -151,6 +151,35 @@ public class TimerViewUtils {
                 fullNums.substring(2, 4) + delimiters[1] +
                 fullNums.substring(4, 6) + delimiters[2];
 
+    }
+
+    /**
+     * Remove the last number currently displayed. Useful as a "delete" command
+     * @param initialString the string displayed currently
+     * @param delimiterType type of delimtier being used
+     * @return the string after the last time number has been removed
+     */
+    public static String removeLastNumber(String initialString, DelimiterType delimiterType) {
+        //get only numbers
+        String stripped = stripNonNumbers(initialString);
+        //remove last number
+        stripped = stripped.subSequence(0,stripped.length()-1).toString();
+        //reformat and return
+        return stringToFormattedHMS(stripped, delimiterType);
+    }
+
+    /**
+     * Remove the last number currently displayed. Useful as a "delete" command.
+     * Uses HMS delimiters as a default. Use removeLastNumber() with delimiter to change this.
+     * @param initialString the string displayed currently
+     * @return the string after the last time number has been removed
+     */
+    public static String removeLastNumber(String initialString) {
+        return removeLastNumber(initialString, DelimiterType.hms);
+    }
+
+    private static String stripNonNumbers(String initialString) {
+        return initialString.replaceAll("[^\\d]", "");
     }
 
     /**

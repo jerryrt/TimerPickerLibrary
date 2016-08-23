@@ -10,6 +10,7 @@ import android.support.v7.view.ContextThemeWrapper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
 
@@ -32,6 +33,7 @@ public class TimerPickerDialogFragment extends DialogFragment {
     private Button nineButton;
     private Button zeroButton;
     private ImageButton deleteButton;
+    private Button deleteLandButton;
     private TimerViewUtils.DelimiterType delimiterType = TimerViewUtils.DelimiterType.hms;
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -39,6 +41,7 @@ public class TimerPickerDialogFragment extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.numerical_dialog_layout, null);
+
         timerTextView = (TimerTextView)view.findViewById(R.id.timerTextView);
         timerTextView.setDelimiterType(delimiterType);
         oneButton = (Button)view.findViewById(R.id.one_button);
@@ -62,12 +65,11 @@ public class TimerPickerDialogFragment extends DialogFragment {
         zeroButton = (Button)view.findViewById(R.id.zero_button);
         zeroButton.setOnClickListener(numberButtonClickListener);
         deleteButton = (ImageButton)view.findViewById(R.id.delete_button);
-        deleteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                timerTextView.removeLastNumber();
-            }
-        });
+        if(deleteButton != null)
+            deleteButton.setOnClickListener(deleteListener);
+        deleteLandButton = (Button)view.findViewById(R.id.delete_land_button);
+        if(deleteLandButton != null)
+            deleteLandButton.setOnClickListener(deleteListener);
             builder.setView(view);
         builder.setMessage(R.string.dialog_title)
                 .setPositiveButton(R.string.dialog_set, new DialogInterface.OnClickListener() {
@@ -83,8 +85,11 @@ public class TimerPickerDialogFragment extends DialogFragment {
                     }
                 });
         // Create the AlertDialog object and return it
-        return builder.create();
+        Dialog dialog = builder.create();
+        //dialog.getWindow().
+        return dialog;
     }
+
 
     public void setDialogListener(TimerPickerDialogListener listener) {
         this.listener = listener;
@@ -113,6 +118,13 @@ public class TimerPickerDialogFragment extends DialogFragment {
                 timerTextView.appendNumber(9);
             else if (v.getId() == R.id.zero_button)
                 timerTextView.appendNumber(0);
+        }
+    };
+
+    View.OnClickListener deleteListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            timerTextView.removeLastNumber();
         }
     };
 

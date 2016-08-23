@@ -2,68 +2,73 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:layout_marginRight="10sp"
-    android:layout_marginLeft="10sp">
+    android:minWidth="@dimen/total_min_width"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:gravity="center_horizontal"
+    >
 
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            >
-            <dalbers.com.timerpicker.TimerTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/timerTextView"
-                custom:time="0"
-                android:textSize="36sp"/>
-
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/delete_button"
-                android:src="@drawable/ic_backspace"
-                android:background="?android:attr/selectableItemBackground" />
-        </LinearLayout>
-
-
-
-
+    <!--Text View-->
     <LinearLayout
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal">
+        android:layout_marginRight="@dimen/divider_size"
+        android:layout_gravity="center_horizontal"
+        >
+        <dalbers.com.timerpicker.TimerTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:id="@+id/timerTextView"
+            custom:time="0"
+            android:textSize="@dimen/timer_text_size"
+           />
+
+        <!--<ImageButton-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/delete_button"-->
+        <!--android:src="@drawable/ic_backspace"-->
+        <!--android:background="?android:attr/selectableItemBackground"-->
+        <!--android:layout_gravity="center"/>-->
+    </LinearLayout>
+
+    <!-- Numbers -->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="@dimen/number_button_group_width"
+        android:layout_height="wrap_content"
+        android:minWidth="@dimen/number_button_group_width"
+        >
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal">
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/number_button_width"
                 android:layout_height="wrap_content"
                 android:text="@string/one_button_text"
                 android:id="@+id/one_button"
                 android:background="?android:attr/selectableItemBackground"
-                android:textSize="24sp"/>
+                android:textSize="@dimen/number_button_text_size"/>
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/number_button_width"
                 android:layout_height="wrap_content"
                 android:text="@string/two_button_text"
                 android:id="@+id/two_button"
                 android:background="?android:attr/selectableItemBackground"
-                android:textSize="24sp"/>
+                android:textSize="@dimen/number_button_text_size"/>
             <!--red button, blue button-->
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/number_button_width"
                 android:layout_height="wrap_content"
                 android:text="@string/three_button_text"
                 android:id="@+id/three_button"
                 android:background="?android:attr/selectableItemBackground"
-                android:textSize="24sp"/>
+                android:textSize="@dimen/number_button_text_size"/>
         </LinearLayout>
 
         <LinearLayout
@@ -72,27 +77,27 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal">
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/number_button_width"
                 android:layout_height="wrap_content"
                 android:text="@string/four_button_text"
                 android:id="@+id/four_button"
                 android:background="?android:attr/selectableItemBackground"
-                android:textSize="24sp"/>
+                android:textSize="@dimen/number_button_text_size"/>
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/number_button_width"
                 android:layout_height="wrap_content"
                 android:text="@string/five_button_text"
                 android:id="@+id/five_button"
                 android:background="?android:attr/selectableItemBackground"
-                android:textSize="24sp"
+                android:textSize="@dimen/number_button_text_size"
                 />
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/number_button_width"
                 android:layout_height="wrap_content"
                 android:text="@string/six_button_text"
                 android:id="@+id/six_button"
                 android:background="?android:attr/selectableItemBackground"
-                android:textSize="24sp"/>
+                android:textSize="@dimen/number_button_text_size"/>
         </LinearLayout>
 
         <LinearLayout
@@ -101,41 +106,48 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal">
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/number_button_width"
                 android:layout_height="wrap_content"
                 android:text="@string/seven_button_text"
                 android:id="@+id/seven_button"
                 android:background="?android:attr/selectableItemBackground"
-                android:textSize="24sp"/>
+                android:textSize="@dimen/number_button_text_size"/>
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/number_button_width"
                 android:layout_height="wrap_content"
                 android:text="@string/eight_button_text"
                 android:id="@+id/eight_button"
                 android:background="?android:attr/selectableItemBackground"
-                android:textSize="24sp"/>
+                android:textSize="@dimen/number_button_text_size"/>
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/number_button_width"
                 android:layout_height="wrap_content"
                 android:text="@string/nine_button_text"
                 android:id="@+id/nine_button"
                 android:background="?android:attr/selectableItemBackground"
-                android:textSize="24sp"/>
+                android:textSize="@dimen/number_button_text_size"/>
         </LinearLayout>
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal">
+            android:layout_gravity="right">
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/number_button_width"
                 android:layout_height="wrap_content"
                 android:text="@string/zero_button_text"
                 android:id="@+id/zero_button"
                 android:background="?android:attr/selectableItemBackground"
-                android:textSize="24sp"/>
+                android:textSize="@dimen/number_button_text_size"/>
+            <Button
+                android:layout_width="@dimen/number_button_width"
+                android:layout_height="wrap_content"
+                android:text="@string/delete_button_text"
+                android:id="@+id/delete_land_button"
+                android:background="?android:attr/selectableItemBackground"
+                android:textSize="@dimen/number_button_text_size"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

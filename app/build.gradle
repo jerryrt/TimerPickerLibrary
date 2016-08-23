@@ -28,6 +28,7 @@ dependencies {
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
     androidTestCompile 'com.android.support.test:runner:0.5'
     androidTestCompile 'com.android.support:design:23.2.1'
+    compile 'com.wdullaer:materialdatetimepicker:2.4.0'
 
     compile project(':timerpicker')
 }
