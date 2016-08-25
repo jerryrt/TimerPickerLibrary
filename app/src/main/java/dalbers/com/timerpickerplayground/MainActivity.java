@@ -19,8 +19,6 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 
-import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
-
 import java.util.Calendar;
 
 import dalbers.com.timerpicker.TimerPickerDialogFragment;
@@ -28,7 +26,7 @@ import dalbers.com.timerpicker.TimerPickerDialogListener;
 import dalbers.com.timerpicker.TimerTextView;
 import dalbers.com.timerpicker.TimerViewUtils;
 
-public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateChangedListener, DatePickerDialog.OnDateSetListener{
+public class MainActivity extends AppCompatActivity {
 
     /*UI variables*/
     private ImageButton createDeleteButton;
@@ -102,15 +100,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     private View.OnClickListener startStopTimerClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Calendar now = Calendar.getInstance();
-            DatePickerDialog dpd = DatePickerDialog.newInstance(
-                    MainActivity.this,
-                    now.get(Calendar.YEAR),
-                    now.get(Calendar.MONTH),
-                    now.get(Calendar.DAY_OF_MONTH)
-            );
-            dpd.show(getFragmentManager(), "Datepickerdialog");
-            /*
             if(timerStarted) {
                 timerStarted = false;
                 setUITimerPaused();
@@ -121,12 +110,11 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             else {
                 timerStarted = true;
                 setUITimerStarted();
-                if(remainingTimerTime != 0) {
+                if (remainingTimerTime != 0) {
                     createSecondTimer(remainingTimerTime);
                     countDownTimer.start();
                 }
             }
-            */
         }
     };
 
@@ -273,15 +261,5 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                 setUITimerDeleted();
             }
         };
-    }
-
-    @Override
-    public void onDateChanged() {
-        Log.d(LOG_TAG,"date");
-    }
-
-    @Override
-    public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
-        Log.d(LOG_TAG,"date");
     }
 }

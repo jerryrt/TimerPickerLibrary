@@ -16,6 +16,7 @@ import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.assertion.ViewAssertions.doesNotExist;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static android.support.test.espresso.matcher.ViewMatchers.isRoot;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.*;
@@ -150,4 +151,41 @@ public class UITester {
         onView(withId(R.id.nine_button)).perform(click());
         onView(withId(R.id.timerTextView)).check(matches(withText(TIMER_NINE_SEC_PUNC)));
     }
+
+    @Test
+    public void fullTimer1To6Landscape() {
+        onView(isRoot()).perform(OrientationChangeAction.orientationLandscape());
+        fullTimer1to6();
+    }
+
+    @Test
+    public void timer7to0Landscape() {
+        onView(isRoot()).perform(OrientationChangeAction.orientationLandscape());
+        timer7to0();
+    }
+
+    @Test
+    public void cancelDialogLandscape() {
+        onView(isRoot()).perform(OrientationChangeAction.orientationLandscape());
+        cancelDialog();
+    }
+
+    @Test
+    public void runTimerLandscape() {
+        onView(isRoot()).perform(OrientationChangeAction.orientationLandscape());
+        runTimer();
+    }
+
+    @Test
+    public void killRunningTimerLandscape() {
+        onView(isRoot()).perform(OrientationChangeAction.orientationLandscape());
+        killRunningTimer();
+    }
+
+    @Test
+    public void switchDelimitersLandscape() {
+        onView(isRoot()).perform(OrientationChangeAction.orientationLandscape());
+        switchDelimiters();
+    }
+
 }

@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--For some reason, horizontal dialogs do not handle sizing well.
+    If you leave widths of things to be wrap_content and
+    the width of the total layout gets too big,
+    the layout just gets cut off.
+    This behaviour is not seen in portrait layouts.
+    To avoid this, you must provide hard coded widths. -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
@@ -14,18 +20,21 @@
         android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="@dimen/divider_size"
         android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
         >
         <dalbers.com.timerpicker.TimerTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:id="@+id/timerTextView"
+            android:layout_marginRight="@dimen/divider_size"
             custom:time="0"
             android:textSize="@dimen/timer_text_size"
            />
-
+        <!--Portrait layout uses a back button next to textview,
+            In landscape, I think it looks weir to have it here
+            So I moved it to next to the zero button-->
         <!--<ImageButton-->
         <!--android:layout_width="wrap_content"-->
         <!--android:layout_height="wrap_content"-->
