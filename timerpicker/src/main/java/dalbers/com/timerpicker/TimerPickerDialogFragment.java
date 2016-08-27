@@ -2,19 +2,13 @@ package dalbers.com.timerpicker;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.view.ContextThemeWrapper;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
-
-import java.sql.Time;
 
 /**
  * Created by davidalbers on 7/12/16.
@@ -33,7 +27,6 @@ public class TimerPickerDialogFragment extends DialogFragment {
     private Button nineButton;
     private Button zeroButton;
     private ImageButton deleteButton;
-    private Button deleteLandButton;
     private TimerViewUtils.DelimiterType delimiterType = TimerViewUtils.DelimiterType.hms;
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -67,10 +60,8 @@ public class TimerPickerDialogFragment extends DialogFragment {
         deleteButton = (ImageButton)view.findViewById(R.id.delete_button);
         if(deleteButton != null)
             deleteButton.setOnClickListener(deleteListener);
-        deleteLandButton = (Button)view.findViewById(R.id.delete_land_button);
-        if(deleteLandButton != null)
-            deleteLandButton.setOnClickListener(deleteListener);
-            builder.setView(view);
+
+        builder.setView(view);
         builder.setMessage(R.string.dialog_title)
                 .setPositiveButton(R.string.dialog_set, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {

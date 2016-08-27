@@ -4,10 +4,10 @@
     Tested on Droid Turbo
 -->
 <resources>
+    <!-- Force buttons to be less wide, since they only contain number, they look awkward so big-->
     <dimen name="number_button_width">64dp</dimen>
-    <dimen name="timer_text_size">36sp</dimen>
+    <!-- For some reason (and only in landscape)
+         you have to force a parent view to a certain width
+         or else the dialog will be cut off -->
     <dimen name="number_button_group_width">192dp</dimen>
-    <dimen name="number_button_text_size">24sp</dimen>
-    <dimen name="divider_size">5dp</dimen>
-    <dimen name="total_min_width">384dp</dimen>
 </resources>

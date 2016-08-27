@@ -4,11 +4,11 @@
     It's unlikely anything falls in this category
 -->
 <resources>
+    <!-- Force buttons to be less wide,
+    since they only contain number, they look awkward so big-->
     <dimen name="number_button_width">48dp</dimen>
-    <dimen name="timer_text_width">144dp</dimen>
-    <dimen name="timer_text_size">36sp</dimen>
+    <!-- For some reason (and only in landscape)
+     you have to force a parent view to a certain width
+     or else the dialog will be cut off -->
     <dimen name="number_button_group_width">144dp</dimen>
-    <dimen name="number_button_text_size">18sp</dimen>
-    <dimen name="divider_size">10dp</dimen>
-    <dimen name="total_min_width">288dp</dimen>
 </resources>
