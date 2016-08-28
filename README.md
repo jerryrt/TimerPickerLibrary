@@ -3,7 +3,6 @@ This library provides timer pickers for setting CountdownTimers and a TextView f
 
 #Examples
 ##Create a `TimerPickerDialog`
----
 ```java
 /** Create and show a timer picker */
 private void showPickerDialog() {
