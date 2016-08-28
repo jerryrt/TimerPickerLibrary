@@ -28,8 +28,14 @@ public class TimerPickerDialogFragment extends DialogFragment {
     private Button zeroButton;
     private ImageButton deleteButton;
     private TimerViewUtils.DelimiterType delimiterType = TimerViewUtils.DelimiterType.hms;
+    private final String TIME_SAVED_INSTANCE_TAG = "time_saved_instance_tag";
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+        //get time that was saved in savedInstanceState
+        //probably from an orientation change, if any
+        long savedTime = 0;
+        if(savedInstanceState != null)
+            savedTime = savedInstanceState.getLong(TIME_SAVED_INSTANCE_TAG);
         // Use the Builder class for convenient dialog construction
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
@@ -37,8 +43,9 @@ public class TimerPickerDialogFragment extends DialogFragment {
 
         timerTextView = (TimerTextView)view.findViewById(R.id.timerTextView);
         timerTextView.setDelimiterType(delimiterType);
+        timerTextView.setTime(savedTime);
         oneButton = (Button)view.findViewById(R.id.one_button);
-                oneButton.setOnClickListener(numberButtonClickListener);
+        oneButton.setOnClickListener(numberButtonClickListener);
         twoButton = (Button)view.findViewById(R.id.two_button);
         twoButton.setOnClickListener(numberButtonClickListener);
         threeButton = (Button)view.findViewById(R.id.three_button);
@@ -60,7 +67,6 @@ public class TimerPickerDialogFragment extends DialogFragment {
         deleteButton = (ImageButton)view.findViewById(R.id.delete_button);
         if(deleteButton != null)
             deleteButton.setOnClickListener(deleteListener);
-
         builder.setView(view);
         builder.setMessage(R.string.dialog_title)
                 .setPositiveButton(R.string.dialog_set, new DialogInterface.OnClickListener() {
@@ -81,7 +87,17 @@ public class TimerPickerDialogFragment extends DialogFragment {
         return dialog;
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState)
+    {
+        outState.putLong(TIME_SAVED_INSTANCE_TAG, timerTextView.getTime());
+        super.onSaveInstanceState(outState);
+    }
 
+    /**
+     * Set a listener for receiving timer set and cancelled callbacks
+     * @param listener
+     */
     public void setDialogListener(TimerPickerDialogListener listener) {
         this.listener = listener;
     }
@@ -119,6 +135,10 @@ public class TimerPickerDialogFragment extends DialogFragment {
         }
     };
 
+    /**
+     * Set the delimiter for separating hours,minutes, and seconds in the timer
+     * @param delimiterType either hms or punctuation (semicolons and periods)
+     */
     public void setDelimiter(TimerViewUtils.DelimiterType delimiterType) {
         this.delimiterType = delimiterType;
     }

@@ -2,5 +2,9 @@
 <resources>
     <declare-styleable name="TimerTextView">
         <attr name="time" format="integer" />
+        <attr name="delimiter" format="enum">
+            <enum name="hms" value="0"/>
+            <enum name="punctuation" value="1"/>
+        </attr>
     </declare-styleable>
 </resources>

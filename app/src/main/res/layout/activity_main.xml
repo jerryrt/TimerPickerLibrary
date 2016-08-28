@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     tools:context="dalbers.com.timerpickerplayground.MainActivity"
     android:weightSum="1"
     android:orientation="vertical"
@@ -49,9 +50,8 @@
         android:layout_gravity="center_horizontal"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_marginTop="12sp"
-        android:visibility="invisible"
         />
-
+    <!--android:visibility="invisible"-->
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -9,17 +9,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
-import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.Spinner;
-
-import java.util.Calendar;
 
 import dalbers.com.timerpicker.TimerPickerDialogFragment;
 import dalbers.com.timerpicker.TimerPickerDialogListener;
@@ -89,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onNothingSelected(AdapterView<?> parent) {
             delimiterType = TimerViewUtils.DelimiterType.hms;
-            timerTextView.setDelimiterType(delimiterType);
+            timerTextView.setDelimiterType(TimerViewUtils.DelimiterType.hms);
         }
     };
 
@@ -150,6 +146,8 @@ public class MainActivity extends AppCompatActivity {
             remainingTimerTime = timeInMillis;
             timerTextView.setTime(timeInMillis);
             setUINewTimer();
+            Log.d("TimerPickerDialog", "Set time to " + TimerViewUtils.millisToHMS(timeInMillis)[0] + "ms");
+
         }
 
         @Override
@@ -217,11 +215,8 @@ public class MainActivity extends AppCompatActivity {
     private void showPickerDialog() {
         TimerPickerDialogFragment timerDialog = new TimerPickerDialogFragment();
         timerDialog.setDelimiter(delimiterType);
-        timerDialog.show(getSupportFragmentManager(), "TimePickerDialog");
+        timerDialog.show(getSupportFragmentManager(), "TimerPickerDialog");
         timerDialog.setDialogListener(dialogListener);
-        getSupportFragmentManager().executePendingTransactions();
-        timerDialog.getDialog().getWindow().getAttributes().width =
-                (int) (getDeviceMetrics(this).widthPixels);
         startStopButton.setText(getString(R.string.pause_timer));
     }
 

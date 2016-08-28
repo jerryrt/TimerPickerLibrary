@@ -8,10 +8,7 @@ import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.RelativeSizeSpan;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.widget.TextView;
-
-import java.util.Arrays;
 
 
 /**
@@ -30,12 +27,12 @@ public class TimerTextView extends TextView {
 
     public TimerTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init(context,attrs);
+        init(context, attrs);
     }
 
     public TimerTextView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init(context,attrs);
+        init(context, attrs);
     }
 
     private void init(Context context, AttributeSet attrs) {
@@ -45,7 +42,21 @@ public class TimerTextView extends TextView {
                 0, 0);
         if(a.hasValue(R.styleable.TimerTextView_time))
             time = a.getInt(R.styleable.TimerTextView_time, 0);
+        if(a.hasValue(R.styleable.TimerTextView_delimiter)) {
+            int delimiterEnum = a.getInt(R.styleable.TimerTextView_delimiter, 0);
+            switch(delimiterEnum) {
+                case 1:
+                    delimiterType = TimerViewUtils.DelimiterType.punctuation;
+                    break;
+                default:
+                    delimiterType = TimerViewUtils.DelimiterType.hms;
+                    break;
+            }
+        }
+
         a.recycle();
+
+        setDelimiterType(delimiterType);
         setTime(time);
     }
 

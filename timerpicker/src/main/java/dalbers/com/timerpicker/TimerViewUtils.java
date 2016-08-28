@@ -86,7 +86,7 @@ public class TimerViewUtils {
      * @param millis milliseconds
      * @return array of ints where index 0 is hours, 1 is minutes, 2 is seconds
      */
-    private static int[] millisToHMS(long millis) {
+    public static int[] millisToHMS(long millis) {
         //round up
         //android's countdown timer will not tick precisely on the millisecond
         //so for example, at 2 milliseconds, you will actually have 1997 ms
