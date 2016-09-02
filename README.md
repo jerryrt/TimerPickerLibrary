@@ -1,5 +1,5 @@
 # TimerPickerLibrary
-This library provides timer pickers for setting CountdownTimers and a TextView for displaying time left in CountdownTimers or elapsed time in a regular Timer. I'm aiming to make these views look and feel like the stock Timer app UI. This is mostly finished.
+This library provides timer pickers for setting CountdownTimers and a TextView for displaying time left in CountdownTimers or elapsed time in a regular Timer. I'm aiming to make these views look and feel like the stock Timer app UI.
 
 #Examples
 ##Get the Library
