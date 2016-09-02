@@ -2,6 +2,14 @@
 This library provides timer pickers for setting CountdownTimers and a TextView for displaying time left in CountdownTimers or elapsed time in a regular Timer. I'm aiming to make these views look and feel like the stock Timer app UI. This is mostly finished.
 
 #Examples
+##Get the Library
+Inside `build.gradle` for your app module add this `compile` line to `dependencies`:
+```java
+dependencies {
+    ...
+    compile 'com.dalbers.timerpicker:timerpicker:1.0.0'
+}
+```
 ##Create a `TimerPickerDialog`
 ```java
 /** Create and show a timer picker */
